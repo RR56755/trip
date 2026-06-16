@@ -1,70 +1,85 @@
 ﻿/* ========================================
-   搜索功能
+   搜索功能 — 重写版
    ======================================== */
+(function () {
+  // Wait for spotsData to be ready
+  function initSearch() {
+    var searchInput = document.querySelector(".search-box input");
+    var searchContainer = document.querySelector(".search-box");
+    if (!searchInput) return;
 
-document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.querySelector(".search-box input");
-  const searchContainer = document.querySelector(".search-box");
+    // Create suggestions dropdown
+    var suggestions = document.createElement("div");
+    suggestions.className = "search-suggestions";
+    searchContainer.style.position = "relative";
+    searchContainer.appendChild(suggestions);
 
-  if (!searchInput) return;
+    var basePath = window.location.pathname.indexOf("/spots/") >= 0 ? "../" : "./";
 
-  // Load spots data
-  let spotsData = [];
+    // Try to get spotsData from window, or fetch it
+    function getSpotsData(callback) {
+      if (window.spotsData && window.spotsData.length) {
+        callback(window.spotsData);
+        return;
+      }
+      var path = basePath + "data/spots.json";
+      fetch(path)
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          window.spotsData = data.spots;
+          callback(data.spots);
+        })
+        .catch(function () {
+          // Silently fail
+          callback([]);
+        });
+    }
 
-  // Try to load from window.spotsData (homepage) or fetch JSON
-  if (window.spotsData) {
-    spotsData = window.spotsData;
-  } else {
-    // For detail pages, fetch the JSON data
-    fetch("../data/spots.json")
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        spotsData = data.spots;
-      })
-      .catch(function () {});
+    var allSpots = [];
+    getSpotsData(function (spots) {
+      allSpots = spots;
+    });
+
+    searchInput.addEventListener("input", function () {
+      var q = this.value.trim().toLowerCase();
+      suggestions.innerHTML = "";
+      if (!q || !allSpots.length) {
+        suggestions.classList.remove("show");
+        return;
+      }
+
+      var results = allSpots.filter(function (s) {
+        return (
+          s.name.toLowerCase().indexOf(q) >= 0 ||
+          s.location.toLowerCase().indexOf(q) >= 0 ||
+          (s.keywords || []).some(function (k) { return k.toLowerCase().indexOf(q) >= 0; })
+        );
+      }).slice(0, 6);
+
+      if (!results.length) {
+        suggestions.classList.remove("show");
+        return;
+      }
+
+      results.forEach(function (s) {
+        var a = document.createElement("a");
+        a.href = basePath + "spots/" + s.id + ".html";
+        a.innerHTML = "<strong>" + s.name + "</strong> <span style='color:#999;font-size:0.8rem;'>— " + s.location + "</span>";
+        suggestions.appendChild(a);
+      });
+      suggestions.classList.add("show");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!searchContainer.contains(e.target)) {
+        suggestions.classList.remove("show");
+      }
+    });
   }
 
-  // Create suggestions dropdown
-  const suggestions = document.createElement("div");
-  suggestions.className = "search-suggestions";
-  searchContainer.style.position = "relative";
-  searchContainer.appendChild(suggestions);
-
-  const basePath = window.location.pathname.includes("/spots/") ? "../" : "./";
-
-  searchInput.addEventListener("input", function () {
-    const q = this.value.trim().toLowerCase();
-    suggestions.innerHTML = "";
-    if (!q || !spotsData.length) {
-      suggestions.classList.remove("show");
-      return;
-    }
-
-    const results = spotsData.filter(function (s) {
-      return (
-        s.name.toLowerCase().includes(q) ||
-        s.location.toLowerCase().includes(q) ||
-        (s.keywords || []).some(function (k) { return k.includes(q); })
-      );
-    }).slice(0, 6);
-
-    if (!results.length) {
-      suggestions.classList.remove("show");
-      return;
-    }
-
-    results.forEach(function (s) {
-      const a = document.createElement("a");
-      a.href = basePath + "spots/" + s.id + ".html";
-      a.textContent = s.name + " - " + s.location;
-      suggestions.appendChild(a);
-    });
-    suggestions.classList.add("show");
-  });
-
-  document.addEventListener("click", function (e) {
-    if (!searchContainer.contains(e.target)) {
-      suggestions.classList.remove("show");
-    }
-  });
-});
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSearch);
+  } else {
+    initSearch();
+  }
+})();

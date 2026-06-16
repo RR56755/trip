@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="xhSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e0f7fa"/><stop offset="60%" stop-color="#b2ebf2"/><stop offset="100%" stop-color="#80deea"/></linearGradient>
+    <linearGradient id="xhLake" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4dd0e1"/><stop offset="100%" stop-color="#00838f"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#xhSky)"/>
+  <!-- 远山 -->
+  <path d="M0,300 Q100,200 200,260 Q300,180 400,240 Q500,190 600,250 Q700,210 800,270 L800,500 L0,500Z" fill="#80cbc4" opacity="0.5"/>
+  <path d="M0,340 Q150,260 300,310 Q400,270 500,320 Q600,280 700,310 Q750,290 800,320 L800,500 L0,500Z" fill="#4db6ac" opacity="0.6"/>
+  <!-- 湖面 -->
+  <ellipse cx="400" cy="380" rx="350" ry="100" fill="url(#xhLake)" opacity="0.8"/>
+  <!-- 苏堤 -->
+  <path d="M150,430 Q250,370 350,390 Q450,360 500,380 Q600,370 700,400" stroke="#66bb6a" stroke-width="6" fill="none"/>
+  <rect x="148" y="420" width="8" height="25" fill="#8d6e63" rx="1"/>
+  <rect x="248" y="362" width="8" height="25" fill="#8d6e63" rx="1"/>
+  <rect x="348" y="382" width="8" height="25" fill="#8d6e63" rx="1"/>
+  <rect x="498" y="372" width="8" height="25" fill="#8d6e63" rx="1"/>
+  <rect x="698" y="392" width="8" height="25" fill="#8d6e63" rx="1"/>
+  <!-- 雷峰塔 -->
+  <rect x="600" y="260" width="30" height="50" fill="#795548"/>
+  <polygon points="600,260 615,230 630,260" fill="#8d6e63"/>
+  <rect x="605" y="268" width="20" height="8" fill="#a1887f"/>
+  <rect x="605" y="280" width="20" height="8" fill="#a1887f"/>
+  <rect x="605" y="292" width="20" height="8" fill="#a1887f"/>
+  <!-- 柳树 -->
+  <line x1="100" y1="340" x2="100" y2="280" stroke="#5d4037" stroke-width="4"/>
+  <path d="M80,290 Q100,260 120,290" stroke="#66bb6a" stroke-width="3" fill="none"/>
+  <path d="M80,300 Q100,270 120,300" stroke="#4caf50" stroke-width="2" fill="none"/>
+  <line x1="700" y1="340" x2="700" y2="280" stroke="#5d4037" stroke-width="4"/>
+  <path d="M680,290 Q700,260 720,290" stroke="#66bb6a" stroke-width="3" fill="none"/>
+  <!-- 小船 -->
+  <path d="M300,410 Q320,405 340,410 Q330,415 320,415Z" fill="#795548"/>
+  <line x1="320" y1="405" x2="320" y2="395" stroke="#795548" stroke-width="1.5"/>
+  <text x="400" y="478" text-anchor="middle" fill="#004d40" font-size="22" font-weight="bold" font-family="sans-serif">杭州西湖</text>
+  <text x="400" y="496" text-anchor="middle" fill="#00695c" font-size="11" font-family="sans-serif">West Lake</text>
+</svg>

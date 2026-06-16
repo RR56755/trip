@@ -3,30 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="桂林漓江详细攻略">
+  <meta name="description" content="桂林漓江详细攻略：门票价格、开放时间、游览路线推荐、交通指南、美食住宿一站式攻略。">
   <meta name="keywords" content="阳朔,竹筏,桂林">
   <title>桂林漓江 — 中国旅行攻略</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/enhanced.css">
   <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <div class="lightbox-content" id="lightboxContent"></div>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <!-- Header -->
   <header class="header">
     <div class="container">
       <a href="../index.html" class="logo"><span class="logo-icon"><i class="fas fa-compass"></i></span>中国旅行攻略</a>
       <nav class="nav">
         <a href="../index.html">首页</a>
         <a href="../index.html#spots">热门景点</a>
+        <a href="javascript:void(0)" onclick="goRandom()" title="随机推荐"><i class="fas fa-dice"></i> 随机</a>
         <a href="../index.html#footer">关于我们</a>
       </nav>
-      <div class="search-box"><input type="text" placeholder="搜索景点、城市..."><i class="fas fa-search search-icon"></i></div>
+      <div class="search-box">
+        <input type="text" placeholder="搜索景点、城市...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
       <button class="mobile-menu-btn" aria-label="菜单"><i class="fas fa-bars"></i></button>
     </div>
   </header>
+
+  <!-- Detail Hero -->
   <section class="detail-hero">
-    <div class="hero-bg-fill" style="background:linear-gradient(135deg, #00695C, #4DB6AC);"></div>
+    <div class="hero-bg-fill">
+      <img src="../images/guilin.svg" alt="桂林漓江" style="width:100%;height:100%;object-fit:cover;">
+    </div>
     <div class="hero-overlay"></div>
     <div class="hero-text">
       <h1>桂林漓江</h1>
@@ -34,14 +51,21 @@
         <span><i class="fas fa-map-pin"></i> 广西壮族自治区桂林市</span>
         <span>★★★★★ 4.8</span>
         <span><i class="fas fa-tag"></i> 自然风光</span>
-        <span><i class="fas fa-medal"></i> 山水甲天下</span>
+        <span><i class="fas fa-medal" style="color:var(--color-warm);"></i> 山水甲天下</span>
+        <button class="fav-btn" data-spot-id="guilin" style="position:relative;top:0;left:0;background:rgba(255,255,255,0.2);border-radius:50%;width:36px;height:36px;font-size:1rem;color:#fff;"><i class="far fa-heart"></i></button>
+        <button class="share-btn-sm" onclick="copyLink()" style="background:rgba(255,255,255,0.2);color:#fff;border-color:rgba(255,255,255,0.3);"><i class="fas fa-share-alt"></i> 分享</button>
       </div>
     </div>
   </section>
+
+  <!-- Breadcrumb -->
   <div class="container"><div class="breadcrumb">
     <a href="../index.html">首页</a> &gt; <a href="../index.html#spots">热门景点</a> &gt; <span>桂林漓江</span>
   </div></div>
+
+  <!-- Detail Layout -->
   <div class="container detail-layout">
+    <!-- Sidebar -->
     <nav class="sidebar-nav">
       <h4>📋 目录</h4>
       <a href="#intro" class="active">景点简介</a>
@@ -50,49 +74,184 @@
       <a href="#transport">交通指南</a>
       <a href="#routes">游玩路线</a>
       <a href="#highlights">必打卡点</a>
+      <a href="#gallery">景点图集</a>
       <a href="#food">美食推荐</a>
       <a href="#hotels">住宿建议</a>
       <a href="#tips">实用贴士</a>
       <a href="#schedule">日程安排</a>
     </nav>
+
+    <!-- Main Content -->
     <main class="detail-content">
-      <section class="detail-section" id="intro"><h2><span class="section-icon">📖</span> 景点简介</h2><p>漓江发源于桂林北部猫儿山，流至阳朔，全长164公里。桂林至阳朔段约83公里是精华游览段。桂林山水被列为世界自然遗产。</p></section>
-      <section class="detail-section" id="info"><h2><span class="section-icon">📊</span> 核心数据</h2><div class="info-grid"><div class="info-item"><div class="label">开放时间</div><div class="value">全天</div></div>
+      <!-- Intro -->
+      <section class="detail-section" id="intro">
+        <h2><span class="section-icon">📖</span> 景点简介</h2>
+        <p>漓江发源于桂林北部猫儿山，流至阳朔，全长164公里。桂林至阳朔段约83公里是精华游览段。桂林山水被列为世界自然遗产。</p>
+        <img src="../images/guilin.svg" alt="桂林漓江" style="width:100%;max-width:600px;border-radius:var(--radius-sm);margin:16px auto;display:block;box-shadow:var(--shadow-sm);">
+      </section>
+
+      <!-- Info -->
+      <section class="detail-section" id="info">
+        <h2><span class="section-icon">📊</span> 核心数据</h2>
+        <div class="info-grid"><div class="info-item"><div class="label">开放时间</div><div class="value">全天</div></div>
           <div class="info-item"><div class="label">建议游玩</div><div class="value">1-2天</div></div>
           <div class="info-item"><div class="label">最佳季节</div><div class="value">春季、秋季</div></div>
-          <div class="info-item"><div class="label">游船时间</div><div class="value">约4-5小时</div></div></div></section>
-      <section class="detail-section" id="ticket"><h2><span class="section-icon">🎫</span> 门票信息</h2><p><strong>三星游船：</strong>约215元</p>
+          <div class="info-item"><div class="label">游船时间</div><div class="value">约4-5小时</div></div></div>
+      </section>
+
+      <!-- Ticket -->
+      <section class="detail-section" id="ticket">
+        <h2><span class="section-icon">🎫</span> 门票信息</h2>
+        <p><strong>三星游船：</strong>约215元</p>
         <p><strong>四星游船：</strong>约360元</p>
-        <p><strong>竹筏漂流：</strong>约80-160元/段</p><p style="margin-top:12px;font-size:0.85rem;color:#999;"><i class="fas fa-info-circle"></i> 以上价格仅供参考，以景区实际公告为准。</p></section>
-      <section class="detail-section" id="transport"><h2><span class="section-icon">🚗</span> 交通指南</h2><p><strong>🚌 外部交通：</strong>乘高铁至桂林站</p>
-        <p><strong>🚶 内部交通：</strong>游船+竹筏</p></section>
-      <section class="detail-section" id="routes"><h2><span class="section-icon">🗺</span> 游玩路线推荐</h2><div class="route-card"><div class="route-time">⏱ 约8小时</div><h3>漓江精华一日游</h3><p><strong>路线：</strong>磨盘山码头→九马画山→黄布倒影→阳朔</p><p>从磨盘山码头乘船出发，途经黄布倒影（20元人民币背面），下午至阳朔。</p></div></section>
-      <section class="detail-section" id="highlights"><h2><span class="section-icon">⭐</span> 必打卡景点</h2><div class="item-list"><div class="item-card"><h3>九马画山</h3><p><strong>推荐理由：</strong>天然石壁九马图</p><p>📸 石壁</p></div>
+        <p><strong>竹筏漂流：</strong>约80-160元/段</p>
+        <p style="margin-top:12px;font-size:0.85rem;color:#999;"><i class="fas fa-info-circle"></i> 以上价格仅供参考，以景区实际公告为准。</p>
+      </section>
+
+      <!-- Transport -->
+      <section class="detail-section" id="transport">
+        <h2><span class="section-icon">🚗</span> 交通指南</h2>
+        <p><strong>🚌 外部交通：</strong>乘高铁至桂林站</p>
+        <p><strong>🚶 内部交通：</strong>游船+竹筏</p>
+      </section>
+
+      <!-- Routes -->
+      <section class="detail-section" id="routes">
+        <h2><span class="section-icon">🗺</span> 游玩路线推荐</h2>
+        <div class="route-card">
+      <div class="route-time">⏱ 约8小时</div>
+      <h3>漓江精华一日游</h3>
+      <p><strong>路线：</strong>磨盘山码头→九马画山→黄布倒影→阳朔</p>
+      <p>从磨盘山码头乘船出发，途经黄布倒影（20元人民币背面），下午至阳朔。</p>
+    </div>
+      </section>
+
+      <!-- Highlights -->
+      <section class="detail-section" id="highlights">
+        <h2><span class="section-icon">⭐</span> 必打卡景点</h2>
+        <div class="item-list"><div class="item-card"><h3>九马画山</h3><p><strong>推荐理由：</strong>天然石壁九马图</p><p>📸 石壁</p></div>
         <div class="item-card"><h3>黄布倒影</h3><p><strong>推荐理由：</strong>20元人民币取景地</p><p>📸 山水倒影</p></div>
-        <div class="item-card"><h3>阳朔西街</h3><p><strong>推荐理由：</strong>阳朔最繁华步行街</p><p>📸 热闹街道</p></div></div></section>
-      <section class="detail-section" id="food"><h2><span class="section-icon">🍜</span> 美食推荐</h2><div class="item-list"><div class="item-card"><h3>桂林米粉</h3><p><strong>推荐：</strong>崇善米粉</p><p><strong>人均：</strong>约10-20元/碗</p></div>
-        <div class="item-card"><h3>啤酒鱼</h3><p><strong>推荐：</strong>大师傅啤酒鱼</p><p><strong>人均：</strong>约60-100元/人</p></div></div></section>
-      <section class="detail-section" id="hotels"><h2><span class="section-icon">🏨</span> 住宿建议</h2><div class="item-list"><div class="item-card"><h3>桂林香格里拉大酒店</h3><p><strong>位置：</strong>桂林市区</p><p><strong>价格：</strong>约600-1000元/晚</p><p><strong>类型：</strong>豪华型</p></div>
+        <div class="item-card"><h3>阳朔西街</h3><p><strong>推荐理由：</strong>阳朔最繁华步行街</p><p>📸 热闹街道</p></div></div>
+      </section>
+
+      <!-- Gallery -->
+      <section class="detail-section" id="gallery">
+        <h2><span class="section-icon">🖼</span> 景点图集</h2>
+        <p style="color:var(--color-text-secondary);font-size:0.9rem;margin-bottom:12px;">点击图片查看大图</p>
+        <div class="gallery-grid">
+          <div class="gallery-item" onclick="openLightbox('../images/guilin.svg','桂林漓江 - 全景')">
+            <img src="../images/guilin.svg" alt="桂林漓江" style="width:100%;height:100%;object-fit:cover">
+            <div class="gallery-label">桂林漓江</div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('../images/gugong.svg','故宫博物院')">
+      <img src="../images/gugong.svg" alt="故宫博物院" style="width:100%;height:100%;object-fit:cover">
+      <div class="gallery-label">故宫博物院</div>
+    </div>
+        <div class="gallery-item" onclick="openLightbox('../images/changcheng.svg','长城（八达岭）')">
+      <img src="../images/changcheng.svg" alt="长城（八达岭）" style="width:100%;height:100%;object-fit:cover">
+      <div class="gallery-label">长城（八达岭）</div>
+    </div>
+        <div class="gallery-item" onclick="openLightbox('../images/xihu.svg','西湖')">
+      <img src="../images/xihu.svg" alt="西湖" style="width:100%;height:100%;object-fit:cover">
+      <div class="gallery-label">西湖</div>
+    </div>
+        </div>
+      </section>
+
+      <!-- Food -->
+      <section class="detail-section" id="food">
+        <h2><span class="section-icon">🍜</span> 美食推荐</h2>
+        <div class="item-list"><div class="item-card"><h3>桂林米粉</h3><p><strong>推荐：</strong>崇善米粉</p><p><strong>人均：</strong>约10-20元/碗</p></div>
+        <div class="item-card"><h3>啤酒鱼</h3><p><strong>推荐：</strong>大师傅啤酒鱼</p><p><strong>人均：</strong>约60-100元/人</p></div></div>
+      </section>
+
+      <!-- Hotels -->
+      <section class="detail-section" id="hotels">
+        <h2><span class="section-icon">🏨</span> 住宿建议</h2>
+        <div class="item-list"><div class="item-card"><h3>桂林香格里拉大酒店</h3><p><strong>位置：</strong>桂林市区</p><p><strong>价格：</strong>约600-1000元/晚</p><p><strong>类型：</strong>豪华型</p></div>
         <div class="item-card"><h3>阳朔悦榕庄</h3><p><strong>位置：</strong>阳朔</p><p><strong>价格：</strong>约1000元/晚</p><p><strong>类型：</strong>豪华型</p></div>
-        <div class="item-card"><h3>阳朔青年旅舍</h3><p><strong>位置：</strong>西街附近</p><p><strong>价格：</strong>约60-120元/晚</p><p><strong>类型：</strong>经济型</p></div></div></section>
-      <section class="detail-section" id="tips"><h2><span class="section-icon">💡</span> 实用贴士</h2><ul class="tips-list"><li>游船需提前购票</li>
+        <div class="item-card"><h3>阳朔青年旅舍</h3><p><strong>位置：</strong>西街附近</p><p><strong>价格：</strong>约60-120元/晚</p><p><strong>类型：</strong>经济型</p></div></div>
+      </section>
+
+      <!-- Tips -->
+      <section class="detail-section" id="tips">
+        <h2><span class="section-icon">💡</span> 实用贴士</h2>
+        <ul class="tips-list"><li>游船需提前购票</li>
         <li>竹筏漂流体验最佳</li>
-        <li>雨季漓江水可能浑浊</li></ul></section>
-      <section class="detail-section" id="schedule"><h2><span class="section-icon">📅</span> 推荐行程安排</h2><div class="timeline"><div class="timeline-item"><div class="time">08:00-09:00</div><h4>登船</h4></div>
+        <li>雨季漓江水可能浑浊</li></ul>
+      </section>
+
+      <!-- Schedule -->
+      <section class="detail-section" id="schedule">
+        <h2><span class="section-icon">📅</span> 推荐行程安排</h2>
+        <div class="timeline"><div class="timeline-item"><div class="time">08:00-09:00</div><h4>登船</h4></div>
         <div class="timeline-item"><div class="time">09:00-13:00</div><h4>漓江游船</h4></div>
         <div class="timeline-item"><div class="time">13:00-14:30</div><h4>兴坪古镇</h4></div>
-        <div class="timeline-item"><div class="time">15:00-17:00</div><h4>阳朔</h4></div></div></section>
+        <div class="timeline-item"><div class="time">15:00-17:00</div><h4>阳朔</h4></div></div>
+      </section>
     </main>
   </div>
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div><h4><i class="fas fa-compass"></i> 中国旅行攻略</h4><p>一站式中国旅行攻略平台，覆盖全国热门旅行目的地。</p></div>
-      <div><h4>快速链接</h4><ul class="footer-links"><li><a href="../index.html#spots">热门景点</a></li><li><a href="../index.html#footer">关于我们</a></li></ul></div>
+      <div><h4>快速链接</h4><ul class="footer-links">
+        <li><a href="../index.html#spots">热门景点</a></li>
+        <li><a href="javascript:void(0)" onclick="goRandom()"><i class="fas fa-dice"></i> 随机推荐</a></li>
+        <li><a href="../index.html#footer">关于我们</a></li>
+      </ul></div>
       <div><h4>免责声明</h4><p>本网站信息仅供参考，具体以景区实际公告为准。</p></div>
       <div class="footer-bottom"><p>&copy; 2026 中国旅行攻略网站 | 探索中国之美</p></div>
     </div>
   </footer>
+
   <button class="back-to-top" aria-label="返回顶部"><i class="fas fa-arrow-up"></i></button>
+
+  <script>
+    // Lightbox
+    function openLightbox(src, caption) {
+      var lb = document.getElementById("lightbox");
+      var content = document.getElementById("lightboxContent");
+      var cap = document.getElementById("lightboxCaption");
+      content.innerHTML = "<img src='" + src + "' alt='" + caption + "' style='width:100%;height:auto;'>";
+      cap.textContent = caption || "";
+      lb.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("show");
+      document.body.style.overflow = "";
+    }
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeLightbox();
+    });
+
+    // Random spot
+    function goRandom() {
+      var ids = ["gugong","changcheng","xihu","zhangjiajie","jiuzhaigou","lijiang","guilin","bingmayong","huangshan","gulangyu"];
+      var r = ids[Math.floor(Math.random() * ids.length)];
+      window.location.href = "../spots/" + r + ".html";
+    }
+
+    // Copy link
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        if (window.showToast) window.showToast("链接已复制");
+      });
+    }
+
+    // Share
+    document.querySelectorAll(".share-btn-sm").forEach(function(b) {
+      b.addEventListener("click", function() {
+        if (navigator.share) {
+          navigator.share({ title: document.title, url: window.location.href });
+        } else {
+          copyLink();
+        }
+      });
+    });
+  </script>
   <script src="../js/main.js"></script>
   <script src="../js/search.js"></script>
   <script src="../js/favorites.js"></script>

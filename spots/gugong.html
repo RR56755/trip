@@ -3,30 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="故宫博物院详细攻略">
+  <meta name="description" content="故宫博物院详细攻略：门票价格、开放时间、游览路线推荐、交通指南、美食住宿一站式攻略。">
   <meta name="keywords" content="明清皇宫,紫禁城,世界遗产,北京">
   <title>故宫博物院 — 中国旅行攻略</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/enhanced.css">
   <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <div class="lightbox-content" id="lightboxContent"></div>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <!-- Header -->
   <header class="header">
     <div class="container">
       <a href="../index.html" class="logo"><span class="logo-icon"><i class="fas fa-compass"></i></span>中国旅行攻略</a>
       <nav class="nav">
         <a href="../index.html">首页</a>
         <a href="../index.html#spots">热门景点</a>
+        <a href="javascript:void(0)" onclick="goRandom()" title="随机推荐"><i class="fas fa-dice"></i> 随机</a>
         <a href="../index.html#footer">关于我们</a>
       </nav>
-      <div class="search-box"><input type="text" placeholder="搜索景点、城市..."><i class="fas fa-search search-icon"></i></div>
+      <div class="search-box">
+        <input type="text" placeholder="搜索景点、城市...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
       <button class="mobile-menu-btn" aria-label="菜单"><i class="fas fa-bars"></i></button>
     </div>
   </header>
+
+  <!-- Detail Hero -->
   <section class="detail-hero">
-    <div class="hero-bg-fill" style="background:linear-gradient(135deg, #8B0000, #4A0000);"></div>
+    <div class="hero-bg-fill">
+      <img src="../images/gugong.svg" alt="故宫博物院" style="width:100%;height:100%;object-fit:cover;">
+    </div>
     <div class="hero-overlay"></div>
     <div class="hero-text">
       <h1>故宫博物院</h1>
@@ -34,14 +51,21 @@
         <span><i class="fas fa-map-pin"></i> 北京市东城区</span>
         <span>★★★★★ 4.9</span>
         <span><i class="fas fa-tag"></i> 历史文化</span>
-        <span><i class="fas fa-medal"></i> #1 最热门</span>
+        <span><i class="fas fa-medal" style="color:var(--color-warm);"></i> #1 最热门</span>
+        <button class="fav-btn" data-spot-id="gugong" style="position:relative;top:0;left:0;background:rgba(255,255,255,0.2);border-radius:50%;width:36px;height:36px;font-size:1rem;color:#fff;"><i class="far fa-heart"></i></button>
+        <button class="share-btn-sm" onclick="copyLink()" style="background:rgba(255,255,255,0.2);color:#fff;border-color:rgba(255,255,255,0.3);"><i class="fas fa-share-alt"></i> 分享</button>
       </div>
     </div>
   </section>
+
+  <!-- Breadcrumb -->
   <div class="container"><div class="breadcrumb">
     <a href="../index.html">首页</a> &gt; <a href="../index.html#spots">热门景点</a> &gt; <span>故宫博物院</span>
   </div></div>
+
+  <!-- Detail Layout -->
   <div class="container detail-layout">
+    <!-- Sidebar -->
     <nav class="sidebar-nav">
       <h4>📋 目录</h4>
       <a href="#intro" class="active">景点简介</a>
@@ -50,57 +74,192 @@
       <a href="#transport">交通指南</a>
       <a href="#routes">游玩路线</a>
       <a href="#highlights">必打卡点</a>
+      <a href="#gallery">景点图集</a>
       <a href="#food">美食推荐</a>
       <a href="#hotels">住宿建议</a>
       <a href="#tips">实用贴士</a>
       <a href="#schedule">日程安排</a>
     </nav>
+
+    <!-- Main Content -->
     <main class="detail-content">
-      <section class="detail-section" id="intro"><h2><span class="section-icon">📖</span> 景点简介</h2><p>故宫博物院，旧称紫禁城，位于北京中轴线的中心，是明清两个朝代的皇宫，也是世界上现存规模最大、保存最为完整的木质结构古建筑群之一。故宫于1961年被列为第一批全国重点文物保护单位，1987年被列为世界文化遗产。故宫占地72万平方米，建筑面积约15万平方米。</p></section>
-      <section class="detail-section" id="info"><h2><span class="section-icon">📊</span> 核心数据</h2><div class="info-grid"><div class="info-item"><div class="label">占地面积</div><div class="value">72万平方米</div></div>
+      <!-- Intro -->
+      <section class="detail-section" id="intro">
+        <h2><span class="section-icon">📖</span> 景点简介</h2>
+        <p>故宫博物院，旧称紫禁城，位于北京中轴线的中心，是明清两个朝代的皇宫，也是世界上现存规模最大、保存最为完整的木质结构古建筑群之一。故宫于1961年被列为第一批全国重点文物保护单位，1987年被列为世界文化遗产。故宫占地72万平方米，建筑面积约15万平方米。</p>
+        <img src="../images/gugong.svg" alt="故宫博物院" style="width:100%;max-width:600px;border-radius:var(--radius-sm);margin:16px auto;display:block;box-shadow:var(--shadow-sm);">
+      </section>
+
+      <!-- Info -->
+      <section class="detail-section" id="info">
+        <h2><span class="section-icon">📊</span> 核心数据</h2>
+        <div class="info-grid"><div class="info-item"><div class="label">占地面积</div><div class="value">72万平方米</div></div>
           <div class="info-item"><div class="label">建筑面积</div><div class="value">约15万平方米</div></div>
           <div class="info-item"><div class="label">开放时间</div><div class="value">08:30-17:00（周一闭馆）</div></div>
           <div class="info-item"><div class="label">建议游玩</div><div class="value">3-4小时</div></div>
           <div class="info-item"><div class="label">最佳季节</div><div class="value">春季（3-5月）、秋季（9-11月）</div></div>
-          <div class="info-item"><div class="label">海拔</div><div class="value">约50米</div></div></div></section>
-      <section class="detail-section" id="ticket"><h2><span class="section-icon">🎫</span> 门票信息</h2><p><strong>旺季价格：</strong>60元（4月1日-10月31日）</p>
+          <div class="info-item"><div class="label">海拔</div><div class="value">约50米</div></div></div>
+      </section>
+
+      <!-- Ticket -->
+      <section class="detail-section" id="ticket">
+        <h2><span class="section-icon">🎫</span> 门票信息</h2>
+        <p><strong>旺季价格：</strong>60元（4月1日-10月31日）</p>
         <p><strong>淡季价格：</strong>40元（11月1日-3月31日）</p>
         <p><strong>优惠政策：</strong>学生、60岁以上老人半价；1.2米以下儿童免费</p>
-        <p><strong>购票方式：</strong>官网或微信小程序提前预约购票</p><p style="margin-top:12px;font-size:0.85rem;color:#999;"><i class="fas fa-info-circle"></i> 以上价格仅供参考，以景区实际公告为准。</p></section>
-      <section class="detail-section" id="transport"><h2><span class="section-icon">🚗</span> 交通指南</h2><p><strong>🚌 外部交通：</strong>可乘地铁1号线至天安门东站/天安门西站；或乘公交至天安门东站</p>
-        <p><strong>🚶 内部交通：</strong>步行游览为主，亦可租用电子导游器</p></section>
-      <section class="detail-section" id="routes"><h2><span class="section-icon">🗺</span> 游玩路线推荐</h2><div class="route-card"><div class="route-time">⏱ 约3-4小时</div><h3>精华一日游</h3><p><strong>路线：</strong>午门→太和殿→中和殿→保和殿→乾清宫→坤宁宫→御花园→神武门</p><p>从午门进入，沿中轴线向北游览，途经三大殿和后三宫，最后到达御花园，从神武门出。</p></div></section>
-      <section class="detail-section" id="highlights"><h2><span class="section-icon">⭐</span> 必打卡景点</h2><div class="item-list"><div class="item-card"><h3>太和殿</h3><p><strong>推荐理由：</strong>故宫最大的宫殿</p><p>📸 金銮殿气势恢宏</p></div>
+        <p><strong>购票方式：</strong>官网或微信小程序提前预约购票</p>
+        <p style="margin-top:12px;font-size:0.85rem;color:#999;"><i class="fas fa-info-circle"></i> 以上价格仅供参考，以景区实际公告为准。</p>
+      </section>
+
+      <!-- Transport -->
+      <section class="detail-section" id="transport">
+        <h2><span class="section-icon">🚗</span> 交通指南</h2>
+        <p><strong>🚌 外部交通：</strong>可乘地铁1号线至天安门东站/天安门西站；或乘公交至天安门东站</p>
+        <p><strong>🚶 内部交通：</strong>步行游览为主，亦可租用电子导游器</p>
+      </section>
+
+      <!-- Routes -->
+      <section class="detail-section" id="routes">
+        <h2><span class="section-icon">🗺</span> 游玩路线推荐</h2>
+        <div class="route-card">
+      <div class="route-time">⏱ 约3-4小时</div>
+      <h3>精华一日游</h3>
+      <p><strong>路线：</strong>午门→太和殿→中和殿→保和殿→乾清宫→坤宁宫→御花园→神武门</p>
+      <p>从午门进入，沿中轴线向北游览，途经三大殿和后三宫，最后到达御花园，从神武门出。</p>
+    </div>
+      </section>
+
+      <!-- Highlights -->
+      <section class="detail-section" id="highlights">
+        <h2><span class="section-icon">⭐</span> 必打卡景点</h2>
+        <div class="item-list"><div class="item-card"><h3>太和殿</h3><p><strong>推荐理由：</strong>故宫最大的宫殿</p><p>📸 金銮殿气势恢宏</p></div>
         <div class="item-card"><h3>珍宝馆</h3><p><strong>推荐理由：</strong>展出大量皇家珍宝</p><p>📸 珍宝琳琅满目</p></div>
-        <div class="item-card"><h3>御花园</h3><p><strong>推荐理由：</strong>皇家园林典范</p><p>📸 园林雅致静谧</p></div></div></section>
-      <section class="detail-section" id="food"><h2><span class="section-icon">🍜</span> 美食推荐</h2><div class="item-list"><div class="item-card"><h3>北京烤鸭</h3><p><strong>推荐：</strong>全聚德、大董烤鸭店</p><p><strong>人均：</strong>约150-300元/人</p></div>
+        <div class="item-card"><h3>御花园</h3><p><strong>推荐理由：</strong>皇家园林典范</p><p>📸 园林雅致静谧</p></div></div>
+      </section>
+
+      <!-- Gallery -->
+      <section class="detail-section" id="gallery">
+        <h2><span class="section-icon">🖼</span> 景点图集</h2>
+        <p style="color:var(--color-text-secondary);font-size:0.9rem;margin-bottom:12px;">点击图片查看大图</p>
+        <div class="gallery-grid">
+          <div class="gallery-item" onclick="openLightbox('../images/gugong.svg','故宫博物院 - 全景')">
+            <img src="../images/gugong.svg" alt="故宫博物院" style="width:100%;height:100%;object-fit:cover">
+            <div class="gallery-label">故宫博物院</div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('../images/changcheng.svg','长城（八达岭）')">
+      <img src="../images/changcheng.svg" alt="长城（八达岭）" style="width:100%;height:100%;object-fit:cover">
+      <div class="gallery-label">长城（八达岭）</div>
+    </div>
+        <div class="gallery-item" onclick="openLightbox('../images/xihu.svg','西湖')">
+      <img src="../images/xihu.svg" alt="西湖" style="width:100%;height:100%;object-fit:cover">
+      <div class="gallery-label">西湖</div>
+    </div>
+        <div class="gallery-item" onclick="openLightbox('../images/zhangjiajie.svg','张家界国家森林公园')">
+      <img src="../images/zhangjiajie.svg" alt="张家界国家森林公园" style="width:100%;height:100%;object-fit:cover">
+      <div class="gallery-label">张家界国家森林公园</div>
+    </div>
+        </div>
+      </section>
+
+      <!-- Food -->
+      <section class="detail-section" id="food">
+        <h2><span class="section-icon">🍜</span> 美食推荐</h2>
+        <div class="item-list"><div class="item-card"><h3>北京烤鸭</h3><p><strong>推荐：</strong>全聚德、大董烤鸭店</p><p><strong>人均：</strong>约150-300元/人</p></div>
         <div class="item-card"><h3>炸酱面</h3><p><strong>推荐：</strong>海碗居</p><p><strong>人均：</strong>约30-50元/人</p></div>
-        <div class="item-card"><h3>豆汁儿焦圈</h3><p><strong>推荐：</strong>护国寺小吃</p><p><strong>人均：</strong>约15-25元/人</p></div></div></section>
-      <section class="detail-section" id="hotels"><h2><span class="section-icon">🏨</span> 住宿建议</h2><div class="item-list"><div class="item-card"><h3>北京王府井希尔顿酒店</h3><p><strong>位置：</strong>王府井</p><p><strong>价格：</strong>约800-1500元/晚</p><p><strong>类型：</strong>豪华型</p></div>
+        <div class="item-card"><h3>豆汁儿焦圈</h3><p><strong>推荐：</strong>护国寺小吃</p><p><strong>人均：</strong>约15-25元/人</p></div></div>
+      </section>
+
+      <!-- Hotels -->
+      <section class="detail-section" id="hotels">
+        <h2><span class="section-icon">🏨</span> 住宿建议</h2>
+        <div class="item-list"><div class="item-card"><h3>北京王府井希尔顿酒店</h3><p><strong>位置：</strong>王府井</p><p><strong>价格：</strong>约800-1500元/晚</p><p><strong>类型：</strong>豪华型</p></div>
         <div class="item-card"><h3>北京香江意舍酒店</h3><p><strong>位置：</strong>天安门附近</p><p><strong>价格：</strong>约400-700元/晚</p><p><strong>类型：</strong>舒适型</p></div>
-        <div class="item-card"><h3>北京161酒店</h3><p><strong>位置：</strong>王府井</p><p><strong>价格：</strong>约200-400元/晚</p><p><strong>类型：</strong>经济型</p></div></div></section>
-      <section class="detail-section" id="tips"><h2><span class="section-icon">💡</span> 实用贴士</h2><ul class="tips-list"><li>故宫门票需提前预约，建议至少提前3-5天购买</li>
+        <div class="item-card"><h3>北京161酒店</h3><p><strong>位置：</strong>王府井</p><p><strong>价格：</strong>约200-400元/晚</p><p><strong>类型：</strong>经济型</p></div></div>
+      </section>
+
+      <!-- Tips -->
+      <section class="detail-section" id="tips">
+        <h2><span class="section-icon">💡</span> 实用贴士</h2>
+        <ul class="tips-list"><li>故宫门票需提前预约，建议至少提前3-5天购买</li>
         <li>周一闭馆（法定节假日除外）</li>
         <li>建议早上开门时进入</li>
         <li>穿舒适的鞋子</li>
-        <li>可以租用电子导游器（20元）</li></ul></section>
-      <section class="detail-section" id="schedule"><h2><span class="section-icon">📅</span> 推荐行程安排</h2><div class="timeline"><div class="timeline-item"><div class="time">08:30-10:00</div><h4>午门进入，游览太和殿</h4></div>
+        <li>可以租用电子导游器（20元）</li></ul>
+      </section>
+
+      <!-- Schedule -->
+      <section class="detail-section" id="schedule">
+        <h2><span class="section-icon">📅</span> 推荐行程安排</h2>
+        <div class="timeline"><div class="timeline-item"><div class="time">08:30-10:00</div><h4>午门进入，游览太和殿</h4></div>
         <div class="timeline-item"><div class="time">10:00-11:30</div><h4>游览中和殿、保和殿，参观珍宝馆</h4></div>
         <div class="timeline-item"><div class="time">11:30-12:30</div><h4>午餐</h4></div>
         <div class="timeline-item"><div class="time">12:30-14:00</div><h4>游览乾清宫、坤宁宫、御花园</h4></div>
         <div class="timeline-item"><div class="time">14:00-15:30</div><h4>游览西六宫</h4></div>
-        <div class="timeline-item"><div class="time">15:30-16:30</div><h4>神武门出，角楼拍照</h4></div></div></section>
+        <div class="timeline-item"><div class="time">15:30-16:30</div><h4>神武门出，角楼拍照</h4></div></div>
+      </section>
     </main>
   </div>
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div><h4><i class="fas fa-compass"></i> 中国旅行攻略</h4><p>一站式中国旅行攻略平台，覆盖全国热门旅行目的地。</p></div>
-      <div><h4>快速链接</h4><ul class="footer-links"><li><a href="../index.html#spots">热门景点</a></li><li><a href="../index.html#footer">关于我们</a></li></ul></div>
+      <div><h4>快速链接</h4><ul class="footer-links">
+        <li><a href="../index.html#spots">热门景点</a></li>
+        <li><a href="javascript:void(0)" onclick="goRandom()"><i class="fas fa-dice"></i> 随机推荐</a></li>
+        <li><a href="../index.html#footer">关于我们</a></li>
+      </ul></div>
       <div><h4>免责声明</h4><p>本网站信息仅供参考，具体以景区实际公告为准。</p></div>
       <div class="footer-bottom"><p>&copy; 2026 中国旅行攻略网站 | 探索中国之美</p></div>
     </div>
   </footer>
+
   <button class="back-to-top" aria-label="返回顶部"><i class="fas fa-arrow-up"></i></button>
+
+  <script>
+    // Lightbox
+    function openLightbox(src, caption) {
+      var lb = document.getElementById("lightbox");
+      var content = document.getElementById("lightboxContent");
+      var cap = document.getElementById("lightboxCaption");
+      content.innerHTML = "<img src='" + src + "' alt='" + caption + "' style='width:100%;height:auto;'>";
+      cap.textContent = caption || "";
+      lb.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("show");
+      document.body.style.overflow = "";
+    }
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeLightbox();
+    });
+
+    // Random spot
+    function goRandom() {
+      var ids = ["gugong","changcheng","xihu","zhangjiajie","jiuzhaigou","lijiang","guilin","bingmayong","huangshan","gulangyu"];
+      var r = ids[Math.floor(Math.random() * ids.length)];
+      window.location.href = "../spots/" + r + ".html";
+    }
+
+    // Copy link
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        if (window.showToast) window.showToast("链接已复制");
+      });
+    }
+
+    // Share
+    document.querySelectorAll(".share-btn-sm").forEach(function(b) {
+      b.addEventListener("click", function() {
+        if (navigator.share) {
+          navigator.share({ title: document.title, url: window.location.href });
+        } else {
+          copyLink();
+        }
+      });
+    });
+  </script>
   <script src="../js/main.js"></script>
   <script src="../js/search.js"></script>
   <script src="../js/favorites.js"></script>

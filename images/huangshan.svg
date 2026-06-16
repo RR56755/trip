@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="hsSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a237e"/><stop offset="40%" stop-color="#3949ab"/><stop offset="100%" stop-color="#e8eaf6"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#hsSky)"/>
+  <circle cx="200" cy="60" r="30" fill="#fff9c4" opacity="0.3"/>
+  <!-- 云海 -->
+  <ellipse cx="400" cy="300" rx="400" ry="40" fill="#fff" opacity="0.3"/>
+  <ellipse cx="300" cy="290" rx="300" ry="30" fill="#fff" opacity="0.25"/>
+  <ellipse cx="500" cy="310" rx="350" ry="35" fill="#fff" opacity="0.2"/>
+  <!-- 远峰 -->
+  <path d="M50,400 Q80,250 120,200 L140,280 L180,400Z" fill="#37474f" opacity="0.6"/>
+  <path d="M600,400 Q630,220 670,160 L700,260 L740,400Z" fill="#37474f" opacity="0.5"/>
+  <!-- 主峰 -->
+  <path d="M250,400 L300,100 L320,80 L340,100 L390,400Z" fill="#455a64"/>
+  <path d="M300,100 L320,80 L340,100" fill="#546e7a"/>
+  <rect x="315" y="95" width="10" height="12" fill="#ffd54f" opacity="0.6"/>
+  <!-- 光明顶 -->
+  <path d="M370,400 L400,150 L430,400Z" fill="#546e7a"/>
+  <circle cx="400" cy="150" r="8" fill="#78909c"/>
+  <!-- 奇松 -->
+  <path d="M320,100 Q310,90 300,95" stroke="#2e7d32" stroke-width="3" fill="none"/>
+  <path d="M300,95 Q290,85 285,90" stroke="#388e3c" stroke-width="2" fill="none"/>
+  <path d="M400,150 Q395,140 390,145" stroke="#2e7d32" stroke-width="3" fill="none"/>
+  <path d="M390,145 Q385,135 380,140" stroke="#388e3c" stroke-width="2" fill="none"/>
+  <!-- 迎客松 -->
+  <path d="M200,400 L220,280 L240,400Z" fill="#37474f"/>
+  <line x1="220" y1="280" x2="180" y2="250" stroke="#2e7d32" stroke-width="4"/>
+  <line x1="220" y1="280" x2="240" y2="235" stroke="#2e7d32" stroke-width="3"/>
+  <line x1="220" y1="280" x2="260" y2="260" stroke="#2e7d32" stroke-width="3"/>
+  <circle cx="180" cy="248" r="8" fill="#388e3c"/>
+  <circle cx="240" cy="233" r="7" fill="#388e3c"/>
+  <circle cx="260" cy="258" r="6" fill="#388e3c"/>
+  <!-- 台阶 -->
+  <line x1="295" y1="350" x2="330" y2="350" stroke="#90a4ae" stroke-width="2"/>
+  <line x1="290" y1="360" x2="335" y2="360" stroke="#90a4ae" stroke-width="2"/>
+  <line x1="285" y1="370" x2="340" y2="370" stroke="#90a4ae" stroke-width="2"/>
+  <text x="400" y="475" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold" font-family="sans-serif">黄山</text>
+  <text x="400" y="494" text-anchor="middle" fill="#c5cae9" font-size="11" font-family="sans-serif">Mount Huangshan</text>
+</svg>

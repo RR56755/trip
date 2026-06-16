@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="jzgSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e0f2f1"/><stop offset="100%" stop-color="#80cbc4"/></linearGradient>
+    <linearGradient id="pool" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4dd0e1"/><stop offset="30%" stop-color="#26c6da"/><stop offset="60%" stop-color="#00acc1"/><stop offset="100%" stop-color="#00838f"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#jzgSky)"/>
+  <!-- 远山 -->
+  <path d="M0,300 Q100,150 200,220 Q300,120 400,180 Q500,130 600,200 Q700,160 800,240 L800,500 L0,500Z" fill="#00695c" opacity="0.3"/>
+  <path d="M0,350 Q100,230 200,280 Q300,200 400,260 Q500,220 600,280 Q700,250 800,300 L800,500 L0,500Z" fill="#004d40" opacity="0.4"/>
+  <!-- 雪山 -->
+  <path d="M600,350 Q620,220 640,150 L660,220 L680,350Z" fill="#eceff1"/>
+  <path d="M640,150 L650,180" stroke="#b0bec5" stroke-width="2"/>
+  <!-- 五彩池 -->
+  <ellipse cx="350" cy="380" rx="120" ry="50" fill="url(#pool)"/>
+  <ellipse cx="330" cy="370" rx="40" ry="18" fill="#4fc3f7" opacity="0.5"/>
+  <ellipse cx="370" cy="385" rx="30" ry="14" fill="#26c6da" opacity="0.5"/>
+  <ellipse cx="340" cy="395" rx="35" ry="15" fill="#00bcd4" opacity="0.4"/>
+  <!-- 瀑布 -->
+  <path d="M500,350 Q510,370 500,390 Q520,370 530,350" fill="#b3e5fc" opacity="0.8"/>
+  <path d="M530,350 Q540,380 530,400 Q550,370 560,350" fill="#b3e5fc" opacity="0.6"/>
+  <!-- 树木 -->
+  <circle cx="100" cy="380" r="20" fill="#2e7d32"/>
+  <circle cx="130" cy="370" r="18" fill="#388e3c"/>
+  <circle cx="160" cy="385" r="15" fill="#43a047"/>
+  <circle cx="600" cy="380" r="22" fill="#2e7d32"/>
+  <circle cx="630" cy="370" r="18" fill="#388e3c"/>
+  <circle cx="660" cy="390" r="16" fill="#43a047"/>
+  <!-- 彩林点缀 -->
+  <circle cx="105" cy="375" r="6" fill="#fdd835"/>
+  <circle cx="135" cy="365" r="5" fill="#ff7043"/>
+  <circle cx="605" cy="375" r="6" fill="#fdd835"/>
+  <circle cx="635" cy="365" r="5" fill="#ff7043"/>
+  <text x="400" y="475" text-anchor="middle" fill="#004d40" font-size="22" font-weight="bold" font-family="sans-serif">九寨沟</text>
+  <text x="400" y="494" text-anchor="middle" fill="#00695c" font-size="11" font-family="sans-serif">Jiuzhaigou Valley</text>
+</svg>

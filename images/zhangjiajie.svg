@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="zjSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1b5e20"/><stop offset="40%" stop-color="#43a047"/><stop offset="100%" stop-color="#e8f5e9"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#zjSky)"/>
+  <!-- 云雾 -->
+  <ellipse cx="300" cy="280" rx="200" ry="30" fill="#fff" opacity="0.3"/>
+  <ellipse cx="550" cy="250" rx="180" ry="25" fill="#fff" opacity="0.25"/>
+  <!-- 峰林 - 左 -->
+  <path d="M80,500 L100,320 L120,500Z" fill="#455a64"/>
+  <path d="M120,500 L140,250 L160,500Z" fill="#37474f"/>
+  <path d="M150,500 L170,300 L190,500Z" fill="#455a64"/>
+  <path d="M200,500 L220,220 L240,500Z" fill="#37474f"/>
+  <path d="M230,500 L250,280 L270,500Z" fill="#455a64"/>
+  <!-- 峰林 - 中（哈利路亚山） -->
+  <path d="M320,500 L350,120 L380,500Z" fill="#37474f"/>
+  <path d="M340,500 L370,180 L400,500Z" fill="#455a64"/>
+  <ellipse cx="350" cy="120" rx="30" ry="10" fill="#4caf50"/>
+  <circle cx="345" cy="118" r="5" fill="#66bb6a"/>
+  <circle cx="355" cy="120" r="4" fill="#81c784"/>
+  <!-- 峰林 - 右 -->
+  <path d="M450,500 L470,200 L490,500Z" fill="#455a64"/>
+  <path d="M480,500 L500,260 L520,500Z" fill="#37474f"/>
+  <path d="M520,500 L540,230 L560,500Z" fill="#455a64"/>
+  <path d="M560,500 L580,280 L600,500Z" fill="#37474f"/>
+  <path d="M600,500 L620,250 L640,500Z" fill="#455a64"/>
+  <path d="M650,500 L670,300 L690,500Z" fill="#37474f"/>
+  <!-- 树木点缀 -->
+  <circle cx="140" cy="248" r="6" fill="#2e7d32"/>
+  <circle cx="220" cy="218" r="6" fill="#388e3c"/>
+  <circle cx="470" cy="198" r="6" fill="#2e7d32"/>
+  <circle cx="540" cy="228" r="6" fill="#388e3c"/>
+  <!-- 前景 -->
+  <path d="M0,460 Q100,440 200,450 Q300,440 400,455 Q500,445 600,450 Q700,440 800,460 L800,500 L0,500Z" fill="#1b5e20"/>
+  <text x="400" y="485" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold" font-family="sans-serif">张家界国家森林公园</text>
+</svg>

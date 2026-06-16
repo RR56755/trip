@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/enhanced.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
@@ -24,6 +25,7 @@
       <nav class="nav">
         <a href="index.html" class="active">首页</a>
         <a href="#spots">热门景点</a>
+        <a href="javascript:void(0)" id="randomNavBtn"><i class="fas fa-dice"></i> 随机推荐</a>
         <a href="#footer">关于我们</a>
       </nav>
       <div class="search-box">
@@ -34,15 +36,40 @@
     </div>
   </header>
 
-  <!-- Hero Banner -->
-  <section class="hero">
-    <div class="hero-bg"></div>
+  <!-- Hero Slideshow -->
+  <section class="hero" id="heroSlideshow">
+    <div class="hero-slideshow" id="heroSlides"></div>
     <div class="hero-content">
       <h1>探索中国之美</h1>
       <p>十大热门旅行目的地 · 一站式深度攻略</p>
-      <a href="#spots" class="btn btn-primary"><i class="fas fa-map-marked-alt"></i> 开始探索</a>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="#spots" class="btn btn-primary"><i class="fas fa-map-marked-alt"></i> 开始探索</a>
+        <button class="random-spot-btn" id="heroRandomBtn"><i class="fas fa-dice"></i> 随机推荐</button>
+      </div>
     </div>
   </section>
+
+  <!-- Stats -->
+  <div class="container">
+    <div class="quick-stats">
+      <div class="stat-item">
+        <div class="stat-number" id="statSpots">10</div>
+        <div class="stat-label">精选景点</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">攻略模块</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">2000+</div>
+        <div class="stat-label">字深度攻略</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="statFav">0</div>
+        <div class="stat-label">已收藏</div>
+      </div>
+    </div>
+  </div>
 
   <!-- Filter Bar -->
   <section class="filter-bar" id="spots">
@@ -52,6 +79,7 @@
       <button class="filter-tag" data-filter="历史文化">🏛 历史文化</button>
       <button class="filter-tag" data-filter="自然风光">🌿 自然风光</button>
       <button class="filter-tag" data-filter="都市休闲">🏖 都市休闲</button>
+      <span style="width:1px;height:24px;background:var(--color-border);margin:0 4px;"></span>
       <button class="filter-tag" data-filter="华北">📍 华北</button>
       <button class="filter-tag" data-filter="华东">📍 华东</button>
       <button class="filter-tag" data-filter="西南">📍 西南</button>
@@ -64,7 +92,10 @@
   <!-- Spot Grid -->
   <section class="container">
     <h2 class="section-title">10 大热门景点</h2>
-    <div class="spot-grid" id="spotGrid"></div>
+    <div id="searchResultsCount" class="search-results-count"></div>
+    <div class="spot-grid" id="spotGrid">
+      <div class="loading-spinner"><i class="fas fa-spinner"></i><br>加载中...</div>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -78,8 +109,8 @@
         <h4>快速链接</h4>
         <ul class="footer-links">
           <li><a href="#spots">热门景点</a></li>
-          <li><a href="#">旅行贴士</a></li>
-          <li><a href="#">关于我们</a></li>
+          <li><a href="javascript:void(0)" id="randomFooterBtn"><i class="fas fa-dice"></i> 随机推荐</a></li>
+          <li><a href="#footer">关于我们</a></li>
         </ul>
       </div>
       <div>
@@ -98,95 +129,147 @@
   <!-- Toast -->
   <div class="toast"></div>
 
-  <script>
-    // Page data embedded directly
-    var spotsData = [];
-  </script>
   <script src="js/main.js"></script>
   <script src="js/search.js"></script>
   <script src="js/favorites.js"></script>
   <script>
-    // Load spots data and render grid
-    fetch("data/spots.json")
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        window.spotsData = data.spots;
-        renderSpots(data.spots);
-      });
+    (function () {
+      var spotIds = ["gugong","changcheng","xihu","zhangjiajie","jiuzhaigou","lijiang","guilin","bingmayong","huangshan","gulangyu"];
 
-    var colorMap = {
-      "gugong": "linear-gradient(135deg, #8B0000, #4A0000)",
-      "changcheng": "linear-gradient(135deg, #5D4037, #3E2723)",
-      "xihu": "linear-gradient(135deg, #0D7377, #14A3A8)",
-      "zhangjiajie": "linear-gradient(135deg, #1B5E20, #388E3C)",
-      "jiuzhaigou": "linear-gradient(135deg, #00695C, #00897B)",
-      "lijiang": "linear-gradient(135deg, #4A148C, #7B1FA2)",
-      "guilin": "linear-gradient(135deg, #00695C, #4DB6AC)",
-      "bingmayong": "linear-gradient(135deg, #795548, #4E342E)",
-      "huangshan": "linear-gradient(135deg, #37474F, #546E7A)",
-      "gulangyu": "linear-gradient(135deg, #E65100, #FF8F00)"
-    };
+      // Load spots data
+      fetch("data/spots.json")
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          window.spotsData = data.spots;
+          renderSpots(data.spots);
+          initHeroSlideshow(data.spots);
+          updateFavCount();
+        })
+        .catch(function () {
+          document.getElementById("spotGrid").innerHTML =
+            "<div style='text-align:center;padding:40px;color:#999;'>数据加载失败，请刷新重试</div>";
+        });
 
-    var iconMap = {
-      "gugong": "🏛", "changcheng": "🏯", "xihu": "🏞",
-      "zhangjiajie": "⛰", "jiuzhaigou": "💎", "lijiang": "🏘",
-      "guilin": "🚣", "bingmayong": "🗿", "huangshan": "🌄", "gulangyu": "🎹"
-    };
+      // ----------------------
+      // Hero Slideshow
+      // ----------------------
+      function initHeroSlideshow(spots) {
+        var container = document.getElementById("heroSlides");
+        if (!container) return;
+        var shuffled = spots.slice().sort(function () { return Math.random() - 0.5; }).slice(0, 5);
+        shuffled.forEach(function (s, i) {
+          var slide = document.createElement("div");
+          slide.className = "hero-slide" + (i === 0 ? " active" : "");
+          var img = document.createElement("img");
+          img.src = "images/" + s.id + ".svg";
+          img.alt = s.name;
+          img.style.cssText = "width:100%;height:100%;object-fit:cover;";
+          slide.appendChild(img);
+          container.appendChild(slide);
+        });
+        // Cycle slides
+        var idx = 0;
+        setInterval(function () {
+          var slides = container.querySelectorAll(".hero-slide");
+          slides.forEach(function (s) { s.classList.remove("active"); });
+          idx = (idx + 1) % slides.length;
+          if (slides[idx]) slides[idx].classList.add("active");
+        }, 4000);
+      }
 
-    function renderSpots(spots) {
-      var grid = document.getElementById("spotGrid");
-      grid.innerHTML = "";
-      spots.forEach(function (s) {
-        var card = document.createElement("div");
-        card.className = "spot-card";
-        card.setAttribute("data-type", s.type);
-        card.setAttribute("data-region", s.region);
-        card.onclick = function () { window.location.href = "spots/" + s.id + ".html"; };
+      // ----------------------
+      // Render Spot Grid
+      // ----------------------
+      function renderSpots(spots) {
+        var grid = document.getElementById("spotGrid");
+        grid.innerHTML = "";
+        spots.forEach(function (s) {
+          var card = document.createElement("div");
+          card.className = "spot-card";
+          card.setAttribute("data-type", s.type);
+          card.setAttribute("data-region", s.region);
+          card.style.animationDelay = (spotIds.indexOf(s.id) * 0.06) + "s";
 
-        var stars = "";
-        for (var i = 1; i <= 5; i++) {
-          stars += (i <= Math.round(s.rating)) ? "★" : "☆";
+          var stars = "";
+          for (var i = 1; i <= 5; i++) stars += (i <= Math.round(s.rating)) ? "★" : "☆";
+
+          card.innerHTML =
+            "<div class=\"spot-card-img\" onclick=\"window.location.href='spots/" + s.id + ".html'\">" +
+              "<button class=\"fav-btn\" data-spot-id=\"" + s.id + "\"><i class=\"far fa-heart\"></i></button>" +
+              "<img src=\"images/" + s.id + ".svg\" alt=\"" + s.name + "\" style=\"width:100%;height:100%;object-fit:cover;\">" +
+              (s.badge ? "<span class=\"spot-badge\">" + s.badge + "</span>" : "") +
+              "<span class=\"spot-rating\">" + stars + " " + s.rating + "</span>" +
+              "<div class=\"overlay-hover\"><span>查看攻略 →</span></div>" +
+            "</div>" +
+            "<div class=\"spot-card-body\" onclick=\"window.location.href='spots/" + s.id + ".html'\">" +
+              "<h3>" + s.name + "</h3>" +
+              "<div class=\"spot-location\"><i class=\"fas fa-map-pin\"></i> " + s.location + "</div>" +
+              "<div class=\"spot-desc\">" + s.desc + "</div>" +
+              "<div class=\"spot-tags\"><span class=\"spot-tag\">" + s.type + "</span></div>" +
+            "</div>";
+          grid.appendChild(card);
+        });
+        // Re-bind favorites
+        if (window.tripFavorites && window.tripFavorites.rebind) {
+          window.tripFavorites.rebind();
         }
+      }
 
-        card.innerHTML =
-          "<div class=\"spot-card-img\">" +
-            "<button class=\"fav-btn\" data-spot-id=\"" + s.id + "\"><i class=\"far fa-heart\"></i></button>" +
-            "<div class=\"placeholder-img\" style=\"background:" + (colorMap[s.id] || "#1a73e8") + "\">" +
-              "<span style=\"font-size:3rem;\">" + (iconMap[s.id] || "📍") + "</span>" +
-            "</div>" +
-            (s.badge ? "<span class=\"spot-badge\">" + s.badge + "</span>" : "") +
-            "<span class=\"spot-rating\">" + stars + " " + s.rating + "</span>" +
-          "</div>" +
-          "<div class=\"spot-card-body\">" +
-            "<h3>" + s.name + "</h3>" +
-            "<div class=\"spot-location\"><i class=\"fas fa-map-pin\"></i> " + s.location + "</div>" +
-            "<div class=\"spot-desc\">" + s.desc + "</div>" +
-            "<div class=\"spot-tags\">" +
-              "<span class=\"spot-tag\">" + s.type + "</span>" +
-            "</div>" +
-          "</div>";
-        grid.appendChild(card);
-      });
-    }
-
-    // Filter functionality
-    document.querySelectorAll(".filter-tag").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        document.querySelectorAll(".filter-tag").forEach(function (b) { b.classList.remove("active"); });
-        this.classList.add("active");
-        var filter = this.getAttribute("data-filter");
-        var allCards = document.querySelectorAll(".spot-card");
-        allCards.forEach(function (card) {
-          if (filter === "all" ||
-              card.getAttribute("data-type") === filter ||
-              card.getAttribute("data-region") === filter) {
-            card.style.display = "";
-          } else {
-            card.style.display = "none";
+      // ----------------------
+      // Filter
+      // ----------------------
+      document.querySelectorAll(".filter-tag").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll(".filter-tag").forEach(function (b) { b.classList.remove("active"); });
+          this.classList.add("active");
+          var filter = this.getAttribute("data-filter");
+          var allCards = document.querySelectorAll(".spot-card");
+          var count = 0;
+          allCards.forEach(function (card) {
+            if (filter === "all" ||
+                card.getAttribute("data-type") === filter ||
+                card.getAttribute("data-region") === filter) {
+              card.style.display = "";
+              count++;
+            } else {
+              card.style.display = "none";
+            }
+          });
+          var countEl = document.getElementById("searchResultsCount");
+          if (countEl) {
+            countEl.textContent = filter === "all" ? "共 " + allCards.length + " 个景点" : "筛选出 " + count + " 个景点";
           }
         });
       });
-    });
+
+      // ----------------------
+      // Random spot
+      // ----------------------
+      function goRandom() {
+        if (window.spotsData && window.spotsData.length) {
+          var r = window.spotsData[Math.floor(Math.random() * window.spotsData.length)];
+          window.location.href = "spots/" + r.id + ".html";
+        } else {
+          var r = spotIds[Math.floor(Math.random() * spotIds.length)];
+          window.location.href = "spots/" + r + ".html";
+        }
+      }
+      document.getElementById("randomNavBtn") && (document.getElementById("randomNavBtn").onclick = goRandom);
+      document.getElementById("heroRandomBtn") && (document.getElementById("heroRandomBtn").onclick = goRandom);
+      document.getElementById("randomFooterBtn") && (document.getElementById("randomFooterBtn").onclick = goRandom);
+
+      // ----------------------
+      // Favorite count
+      // ----------------------
+      function updateFavCount() {
+        var el = document.getElementById("statFav");
+        if (el && window.tripFavorites) {
+          var favs = window.tripFavorites.getFavorites();
+          el.textContent = favs.length;
+        }
+      }
+      document.addEventListener("favoriteChange", updateFavCount);
+    })();
   </script>
 </body>
 </html>

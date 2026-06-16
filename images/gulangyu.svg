@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="glySky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e3f2fd"/><stop offset="100%" stop-color="#bbdefb"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4fc3f7"/><stop offset="100%" stop-color="#0277bd"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#glySky)"/>
+  <!-- 海面 -->
+  <ellipse cx="400" cy="420" rx="400" ry="80" fill="url(#sea)" opacity="0.7"/>
+  <!-- 岛屿 -->
+  <path d="M100,380 Q200,250 400,260 Q600,250 700,380 Q600,420 400,430 Q200,420 100,380Z" fill="#81c784"/>
+  <!-- 建筑 -->
+  <rect x="250" y="280" width="30" height="40" fill="#fff9c4"/>
+  <polygon points="248,280 265,265 282,280" fill="#ff7043"/>
+  <rect x="255" y="285" width="8" height="8" fill="#90caf9"/>
+  <rect x="268" y="285" width="8" height="8" fill="#90caf9"/>
+  <rect x="255" y="298" width="8" height="8" fill="#90caf9"/>
+  <rect x="268" y="298" width="8" height="8" fill="#90caf9"/>
+  <!-- 红砖建筑 -->
+  <rect x="320" y="290" width="35" height="40" fill="#ffab91"/>
+  <polygon points="318,290 337,275 357,290" fill="#d32f2f"/>
+  <rect x="326" y="295" width="8" height="8" fill="#fff"/>
+  <rect x="340" y="295" width="8" height="8" fill="#fff"/>
+  <rect x="326" y="308" width="8" height="8" fill="#fff"/>
+  <rect x="340" y="308" width="8" height="8" fill="#fff"/>
+  <!-- 教堂 -->
+  <rect x="420" y="285" width="28" height="45" fill="#eceff1"/>
+  <path d="M418,285 Q434,265 450,285" fill="#90a4ae"/>
+  <rect x="430" y="295" width="8" height="8" fill="#64b5f6"/>
+  <rect x="430" y="308" width="8" height="8" fill="#64b5f6"/>
+  <line x1="434" y1="268" x2="434" y2="280" stroke="#bdbdbd" stroke-width="2"/>
+  <!-- 小楼 -->
+  <rect x="500" y="295" width="25" height="35" fill="#ffe0b2"/>
+  <polygon points="498,295 512,280 527,295" fill="#ff8a65"/>
+  <rect x="505" y="300" width="6" height="6" fill="#81d4fa"/>
+  <rect x="515" y="300" width="6" height="6" fill="#81d4fa"/>
+  <!-- 钢琴 -->
+  <rect x="380" y="345" width="30" height="20" fill="#212121" rx="3"/>
+  <rect x="385" y="340" width="20" height="8" fill="#424242" rx="2"/>
+  <rect x="382" y="348" width="6" height="6" fill="#fff" rx="1"/>
+  <rect x="390" y="348" width="6" height="6" fill="#fff" rx="1"/>
+  <rect x="398" y="348" width="6" height="6" fill="#fff" rx="1"/>
+  <line x1="395" y1="340" x2="395" y2="345" stroke="#fff" stroke-width="0.5"/>
+  <line x1="388" y1="340" x2="388" y2="345" stroke="#fff" stroke-width="0.5"/>
+  <line x1="402" y1="340" x2="402" y2="345" stroke="#fff" stroke-width="0.5"/>
+  <!-- 树木 -->
+  <circle cx="200" cy="330" r="18" fill="#43a047"/>
+  <circle cx="220" cy="320" r="15" fill="#388e3c"/>
+  <circle cx="560" cy="330" r="18" fill="#43a047"/>
+  <circle cx="580" cy="320" r="15" fill="#388e3c"/>
+  <!-- 船 -->
+  <path d="M150,410 Q170,405 190,410 Q180,415 170,415Z" fill="#5d4037"/>
+  <text x="400" y="478" text-anchor="middle" fill="#01579b" font-size="22" font-weight="bold" font-family="sans-serif">鼓浪屿</text>
+  <text x="400" y="496" text-anchor="middle" fill="#0277bd" font-size="11" font-family="sans-serif">Gulangyu Island</text>
+</svg>

@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="中国旅行攻略网站 — 涵盖故宫、长城、西湖、张家界、九寨沟等10大热门景点详细攻略">
+  <meta name="keywords" content="中国旅游,旅行攻略,故宫,长城,西湖,张家界,九寨沟,丽江,桂林,兵马俑,黄山,鼓浪屿">
+  <title>中国旅行攻略 — 10大热门景点详细攻略</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <span class="logo-icon"><i class="fas fa-compass"></i></span>
+        中国旅行攻略
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="active">首页</a>
+        <a href="#spots">热门景点</a>
+        <a href="#footer">关于我们</a>
+      </nav>
+      <div class="search-box">
+        <input type="text" placeholder="搜索景点、城市..." id="searchInput">
+        <i class="fas fa-search search-icon"></i>
+      </div>
+      <button class="mobile-menu-btn" aria-label="菜单"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1>探索中国之美</h1>
+      <p>十大热门旅行目的地 · 一站式深度攻略</p>
+      <a href="#spots" class="btn btn-primary"><i class="fas fa-map-marked-alt"></i> 开始探索</a>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <section class="filter-bar" id="spots">
+    <div class="container">
+      <span style="font-weight:600;font-size:0.9rem;color:var(--color-text-secondary);">筛选：</span>
+      <button class="filter-tag active" data-filter="all">全部</button>
+      <button class="filter-tag" data-filter="历史文化">🏛 历史文化</button>
+      <button class="filter-tag" data-filter="自然风光">🌿 自然风光</button>
+      <button class="filter-tag" data-filter="都市休闲">🏖 都市休闲</button>
+      <button class="filter-tag" data-filter="华北">📍 华北</button>
+      <button class="filter-tag" data-filter="华东">📍 华东</button>
+      <button class="filter-tag" data-filter="西南">📍 西南</button>
+      <button class="filter-tag" data-filter="西北">📍 西北</button>
+      <button class="filter-tag" data-filter="华南">📍 华南</button>
+      <button class="filter-tag" data-filter="华中">📍 华中</button>
+    </div>
+  </section>
+
+  <!-- Spot Grid -->
+  <section class="container">
+    <h2 class="section-title">10 大热门景点</h2>
+    <div class="spot-grid" id="spotGrid"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div>
+        <h4><i class="fas fa-compass"></i> 中国旅行攻略</h4>
+        <p>一站式中国旅行攻略平台，覆盖全国热门旅行目的地。我们致力于为旅行爱好者提供最新、最全、最实用的旅行信息。</p>
+      </div>
+      <div>
+        <h4>快速链接</h4>
+        <ul class="footer-links">
+          <li><a href="#spots">热门景点</a></li>
+          <li><a href="#">旅行贴士</a></li>
+          <li><a href="#">关于我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>免责声明</h4>
+        <p>本网站信息仅供参考，具体门票价格、开放时间等以景区实际公告为准。</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 中国旅行攻略网站 | 探索中国之美</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="返回顶部"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- Toast -->
+  <div class="toast"></div>
+
+  <script>
+    // Page data embedded directly
+    var spotsData = [];
+  </script>
+  <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/favorites.js"></script>
+  <script>
+    // Load spots data and render grid
+    fetch("data/spots.json")
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        window.spotsData = data.spots;
+        renderSpots(data.spots);
+      });
+
+    var colorMap = {
+      "gugong": "linear-gradient(135deg, #8B0000, #4A0000)",
+      "changcheng": "linear-gradient(135deg, #5D4037, #3E2723)",
+      "xihu": "linear-gradient(135deg, #0D7377, #14A3A8)",
+      "zhangjiajie": "linear-gradient(135deg, #1B5E20, #388E3C)",
+      "jiuzhaigou": "linear-gradient(135deg, #00695C, #00897B)",
+      "lijiang": "linear-gradient(135deg, #4A148C, #7B1FA2)",
+      "guilin": "linear-gradient(135deg, #00695C, #4DB6AC)",
+      "bingmayong": "linear-gradient(135deg, #795548, #4E342E)",
+      "huangshan": "linear-gradient(135deg, #37474F, #546E7A)",
+      "gulangyu": "linear-gradient(135deg, #E65100, #FF8F00)"
+    };
+
+    var iconMap = {
+      "gugong": "🏛", "changcheng": "🏯", "xihu": "🏞",
+      "zhangjiajie": "⛰", "jiuzhaigou": "💎", "lijiang": "🏘",
+      "guilin": "🚣", "bingmayong": "🗿", "huangshan": "🌄", "gulangyu": "🎹"
+    };
+
+    function renderSpots(spots) {
+      var grid = document.getElementById("spotGrid");
+      grid.innerHTML = "";
+      spots.forEach(function (s) {
+        var card = document.createElement("div");
+        card.className = "spot-card";
+        card.setAttribute("data-type", s.type);
+        card.setAttribute("data-region", s.region);
+        card.onclick = function () { window.location.href = "spots/" + s.id + ".html"; };
+
+        var stars = "";
+        for (var i = 1; i <= 5; i++) {
+          stars += (i <= Math.round(s.rating)) ? "★" : "☆";
+        }
+
+        card.innerHTML =
+          "<div class=\"spot-card-img\">" +
+            "<button class=\"fav-btn\" data-spot-id=\"" + s.id + "\"><i class=\"far fa-heart\"></i></button>" +
+            "<div class=\"placeholder-img\" style=\"background:" + (colorMap[s.id] || "#1a73e8") + "\">" +
+              "<span style=\"font-size:3rem;\">" + (iconMap[s.id] || "📍") + "</span>" +
+            "</div>" +
+            (s.badge ? "<span class=\"spot-badge\">" + s.badge + "</span>" : "") +
+            "<span class=\"spot-rating\">" + stars + " " + s.rating + "</span>" +
+          "</div>" +
+          "<div class=\"spot-card-body\">" +
+            "<h3>" + s.name + "</h3>" +
+            "<div class=\"spot-location\"><i class=\"fas fa-map-pin\"></i> " + s.location + "</div>" +
+            "<div class=\"spot-desc\">" + s.desc + "</div>" +
+            "<div class=\"spot-tags\">" +
+              "<span class=\"spot-tag\">" + s.type + "</span>" +
+            "</div>" +
+          "</div>";
+        grid.appendChild(card);
+      });
+    }
+
+    // Filter functionality
+    document.querySelectorAll(".filter-tag").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll(".filter-tag").forEach(function (b) { b.classList.remove("active"); });
+        this.classList.add("active");
+        var filter = this.getAttribute("data-filter");
+        var allCards = document.querySelectorAll(".spot-card");
+        allCards.forEach(function (card) {
+          if (filter === "all" ||
+              card.getAttribute("data-type") === filter ||
+              card.getAttribute("data-region") === filter) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
